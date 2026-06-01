@@ -59,8 +59,7 @@ public class UserService {
                 .passwordHash(passwordEncoder.encode(request.getPassword())) // Mã hóa password
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .role(request.getRole()) // Lấy Role từ request do Admin chỉ định
-                .isActive(true)
+                .role(request.getRole())
                 .build();
 
         return userMapper.toUserResponse(userRepository.save(user));

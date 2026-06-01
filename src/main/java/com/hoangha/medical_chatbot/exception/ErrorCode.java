@@ -26,8 +26,14 @@ public enum ErrorCode {
     LLM_SERVICE_ERROR("AI Service is temporarily unavailable", HttpStatus.SERVICE_UNAVAILABLE),
 
     // Medical Data Errors
-    PATIENT_RECORD_NOT_FOUND("Patient medical record not found", HttpStatus.NOT_FOUND);
+    PATIENT_RECORD_NOT_FOUND("Patient medical record not found", HttpStatus.NOT_FOUND),
 
+    //REDIS CACHE ERRORS
+
+
+    //OBJECT MAPPER ERROR
+    DESERIALIZATION_ERROR("Error deserializing object", HttpStatus.INTERNAL_SERVER_ERROR),
+    ;
     final String message;
     final HttpStatus statusCode;
 
