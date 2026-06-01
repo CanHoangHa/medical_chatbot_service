@@ -72,7 +72,6 @@ public class AuthService {
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .role(Role.USER) // Đăng ký mặc định là quyền USER
-                .isActive(true)
                 .build();
 
         user = userRepository.save(user);

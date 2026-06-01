@@ -25,7 +25,7 @@ public class ChatMessage {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private MessageRole role; // Enum: SYSTEM, USER, ASSISTANT, TOOL (Khớp với Spring AI)
+    private MessageRole role;
 
     @Column(columnDefinition = "TEXT")
     private String content;

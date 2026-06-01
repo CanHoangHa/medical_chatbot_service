@@ -3,6 +3,7 @@ package com.hoangha.medical_chatbot.module.user.entity;
 import com.hoangha.medical_chatbot.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
@@ -16,7 +17,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 public class User extends BaseEntity {
 
     @Id
@@ -39,7 +40,4 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role; // Enum: USER, ADMIN
-
-    @Column(name = "is_active", nullable = false)
-    private boolean isActive = true;
 }

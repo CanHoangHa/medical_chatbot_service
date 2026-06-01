@@ -4,9 +4,10 @@ import com.hoangha.medical_chatbot.common.BaseEntity;
 import com.hoangha.medical_chatbot.module.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -15,7 +16,9 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
+@SQLDelete(sql = "UPDATE chat_sessions SET is_active = false WHERE id=?")
+@SQLRestriction("is_active = true")
 public class ChatSession extends BaseEntity {
 
     @Id
@@ -26,8 +29,9 @@ public class ChatSession extends BaseEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ChatMessage> messages = new ArrayList<>();
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive = true;
 }
